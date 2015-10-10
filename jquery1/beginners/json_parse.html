@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+
+    <title>How to Parse a JSON file using jQuery</title>
+
+    <style>
+        body{
+            text-align: center;
+            font-family: arial;
+        }
+
+        .button{
+            margin:20px;
+            font-size:16px;
+            font-weight: bold;
+            padding:5px 10px;
+        }
+    </style>
+
+
+</head>
+<body>
+<a href="../../json/data.json" target="_blank">Open JSON file</a><br />
+<input type="button" value="Get and parse JSON" class="button" />
+<br />
+<span id="results"></span>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+
+    //When DOM loaded we attach click event to button
+    $(document).ready(function() {
+
+        //after button is clicked we download the data
+        $('.button').click(function(){
+
+            //start ajax request
+            $.ajax({
+                url: "../../json/data.json",
+                //force to handle it as text
+                dataType: "text",
+                success: function(data) {
+
+                    var json = $.parseJSON(data);
+
+                    $('#results').html('Plugin name: ' + json.name + '<br />Author: ' + json.author.name);
+                    /*alert(Array.isArray(json.licenses));
+                    alert(Array.isArray(json.author));
+                    alert(Array.isArray(json.keywords));*/
+                    $.each(json.licenses,function(id,obj) {
+                        alert(obj.url);
+                        $.each(obj,function(name,value){
+                            alert(name+' '+value);
+                        })
+                    });
+                    $.each(json.keywords,function(id,obj) {
+                        alert(obj);
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
