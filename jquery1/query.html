@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test</title>
+    <style>
+        ul li{color: red;}
+        .vk {color:blue;}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        //$('ul li').addClass('vk');
+        $(function() {
+           $('li:first-child').addClass('vk');
+        });
+        /*$(document).ready(function() {
+            $('li:first-child').addClass('vk');
+        });*/
+    </script>
+</head>
+<ul>
+    <li>Hello World</li>
+    <li>Hello World1</li>
+    <li>Hello World2</li>
+</ul>
+<body>
+</body>
+</html>
