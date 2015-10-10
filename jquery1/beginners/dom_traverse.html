@@ -1,0 +1,46 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+
+<h1 id="title">DOM Traverse</h1>
+<p class="paragraph">Paragraph text 1</p>
+<p class="paragraph">Paragraph text 2</p>
+<input type="text">
+<button onclick="addLi()">Add</button>
+<button onclick="removeLi()">Remove</button>
+<ul>
+    <li>List element 1</li>
+    <li>List element 2</li>
+    <li>List element 3</li>
+    <li>List element 4</li>
+    <li>List element 5</li>
+</ul>
+
+<script>
+    function addLi() {
+        var count = $('ul').children().length + 1;
+        var txt = "List element " + count;
+        var newLi = $('<li></li>').text(txt);
+        $('ul').append(newLi);
+    }
+
+    function removeLi() {
+        if ($('ul').children().length == 0) {
+            return;
+        }
+
+        $('ul li:last').remove();
+    }
+    //$('h1').siblings().css('outline','1px solid red');
+    //$('body').children('.paragraph').css('outline','1px solid red');
+    //$('body').children('ul').css('outline','1px solid red');
+    //$('li:last').parents().css('outline','1px solid red');
+    $('li').eq(2).css('outline','1px solid red');
+</script>
+</body>
+
+</html>
